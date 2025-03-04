@@ -1,0 +1,269 @@
+Opening green windows
+Technological opportunities for a low-carbon world
+TECHNOLOGY AND INNOVATION REPORT 2023
+U N I T E D  N A T I O N S  C O N F E R E N C E  O N  T R A D E  A N D  D E V E L O P M E N T
+OVERVIEW
+Geneva, 2023
+This work is available through open access, by complying with the Creative Commons licence created for intergovernmental organizations, at http://creativecommons.org/licenses/by/3.0/igo/.
+TECHNOLOGY AND INNOVATION REPORT 2023
+1
+OVERVIEW
+OPENING GREEN WINDOWS
+Technological opportunities for a low-carbon world
+1. Green windows of opportunity
+In 2023, the world faces severe social and economic challenges. While trying to recover from the COVID-19 pandemic, many countries are now coping with the repercussions of the war in Ukraine, which has not only caused immense suffering but has also heightened geopolitical tensions and created threats to global trade and energy and food security.
+2. Moving fast with frontier technologies
+At the leading edge of green innovation are new and rapidly developing technologies that take advantage of digitalization and connectivity.
+Experimentation
+Higher degree of experimentation and novelty: Limited opportunities for a path-following catch-up
+Public Goods
+Driven by social value and the provision of climate-related public goods
+Directed Development
+Social drive implies directed development: High levels of policy interventions
+Global Agendas
+Influenced by global agendas
+OVERVIEW
+OPENING GREEN WINDOWS Technological opportunities for a low-carbon world TECHNOLOGY AND INNOVATION REPORT 2023 3 As with previous waves of automation, frontier technologies are both destroying old jobs and creating new ones.Current job expectations may be more pessimistic because of the increasing capacity of AI to mimic human intelligence. Nevertheless, most alarmist scenarios often fail to take into account that not all tasks in a job are automated, and, most importantly, that technology also creates new products, tasks, professions, and economic activities throughout the economy. The net impact on jobs will depend on the final balance between creation and extinction. 
+OVERVIEW
+For these new technologies, the knowledge landscape is dominated by the United States and China, with a combined 30 per cent share of global publications and almost 70 per cent of patents (Figure 2). Other countries compete in specific categories, notably France, Germany, India, Japan, the Republic of Korea, and the United Kingdom. All these technologies are at the frontiers of change, but some are more mature than others, as is evident by the record of patents and publications. On the basis of the years in which patents were first sought and the period Figure 2 Country share of publications and patents, by frontier technology (percentage) 16 17 68 Industry 4.0 frontier technologies 15 16 69 Green frontier technologies 21 15 64 Other frontier technologies Others China United States Patents Publications 18 49 33 Industry 4.0 frontier technologies 9 56 35 Green frontier technologies 40 27 32 Other frontier technologies Source: UNCTAD calculations based on data from Scopus and PatSeer.
+OVERVIEW
+OVERVIEW OPENING GREEN WINDOWS Technological opportunities for a low-carbon world TECHNOLOGY AND INNOVATION REPORT 2023 4 over which the original patents were subsequently cited, the most mature technology is AI. Most patents for this technology were applied for in 2014 and cite patents on average from 2005, producing a difference of around 9 years. This may seem counterintuitive. But today’s AI patents, such as those for autonomous vehicles and the metaverse, are technologically closer to those for search engines and digital maps, and many of the underlying principles patented in 2005 are still valid. Source:UNCTAD.
+Note
+For each technology, the number in the bar graph shows the patent maturity, which is the difference between the weighted average patent application year and the weighted average year of the 20 most cited patents between 2000 and 2021. Figure 3 Patent maturity of frontier technologies 1.41 1.60 2.08 2.84 3.28 3.32 3.61 3.74 4.32 5.12 5.22 5.22 5.69 6.58 6.99 7.94 8.72 0 1 2 3 4 5 6 7 8 9 10 IoT Concentrated Solar Power Blockchain Nanotechnology Big Data 5G Biofuels Electric Vehicles Gene Editing Robotics Drone Technology 3D Printing Wind Energy Biogas and Biomass Green Hydrogen Solar PV AI Years Frontier Technology
+OVERVIEW
+OVERVIEW OPENING GREEN WINDOWS Technological opportunities for a low-carbon world TECHNOLOGY AND INNOVATION REPORT 2023 5 IoT, on the other hand, is relatively immature, with an average patent application year of 2017 and an average citation date of 2016. This suggests that the dominant design behind IoT innovation is being updated almost yearly, reflecting a technology that is still evolving fast. For developing countries that need to catch up, the more mature technologies may seem simpler and more affordable options since they demand less research and development. Biomass and solar PV, for example, have well-tested technologies that latecomers can absorb and use with imported machinery from the outside. For solar PV, for example, China initially imported foreign production machinery and benefited from economies of scale. However, these markets may now be more difficult to enter since the incumbents will have developed strong and efficient production processes and are able to trade internationally at more competitive prices.
+3. Laying the foundations
+If developing countries are to capture the economic gains associated with new technologies, their firms must have the required capabilities. This includes not just scientific or technical skill, but also the necessary policies, regulations, and infrastructure. To assess national preparedness to equitably use, adopt and adapt frontier technologies, this report presents the 2023 results of the ‘readiness index’ that combines indicators for ICT, skills, R&D, industrial capacity and finance. This ranking for 166 countries is dominated by high-income economies, notably the United States, Sweden, Singapore, Switzerland, and the Netherlands. The second quarter of the list includes emerging economies – notably Brazil, which is ranked at 40, China at 35, India at 46, the Russian Federation at 31, and South Africa at 56. China’s lower-than-expected position in the ranking, when compared with its productive and innovative capacities in frontier technologies, is due to urban-rural disparities in Internet coverage and broadband speed. Further behind are countries in Latin America, the Caribbean, and Sub-Saharan Africa, which are the least prepared to use, adopt and adapt frontier technologies and are at risk of missing current windows of opportunity.
+OVERVIEW
+OVERVIEW
+OPENING GREEN WINDOWS
+Technological opportunities for a low-carbon world
+TECHNOLOGY AND INNOVATION REPORT 2023
+6
+rank lower than 100 for all the indicators, with particular weaknesses in ICT infrastructure and research & development.
+The countries best placed to move to smart production are those with higher levels of skill and stronger manufacturing industries. The figure below shows the balance between workforce skills and market opportunities – based on high-skill and technology-intensive manufacturing exports as a percentage of total exports, and high-skill employment as a percentage of the working population.
+Figure 4
+Readiness to benefit from the diffusion of Industry 4.0
+10
+20
+30
+40
+50
+60
+70
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+High-skill employment  (percentage of working population)
+High skills but low opportunities  High opportunities and skills  Low opportunities and skills High opportunities but low skills  High-skill and technology-intensive manufacturing exports (percentage of total exports)
+AFG
+ALB
+DZA
+AGO
+ARG
+AUS
+AUT
+BHR
+BGD
+BRB
+BEL
+BTN
+BOL
+BRA
+BRN
+BGR
+BFA
+CMR
+CAN
+CAF
+CHL
+CHN
+COM
+CRI
+CIV
+CUB
+CZE
+PRK
+COD
+DNK
+DJI
+DOM
+EST
+SWZ
+ETH
+FJI
+FIN
+FRA
+GEO
+DEU
+HND
+HKG
+HUN
+ISL
+IND
+IDN
+IRN
+IRQ
+IRL
+ISR
+ITA
+JPN
+JOR
+KAZ
+KEN
+KWT
+LAO
+LVA
+LBN
+LUX
+MAC
+MYS
+MLT
+MUS
+MEX
+MAR
+NPL
+NLD
+NZL
+NGA
+MKD
+NOR
+OMN
+PAK
+PAN
+PHL
+POL
+PRT
+QAT
+KOR
+MDA
+ROU
+RUS
+LCA
+STP
+SAU
+SRB
+SGP
+SVN
+SOM
+ESP
+SUR
+SWE
+CHE
+TWN
+THA
+TUN
+UKR
+GBR
+USA
+VUT
+VNM
+Source:UNCTAD (2022). Industry 4.0 for Inclusive Development (United Nations publication, Sales No. E.22.II.D.8, New York and Geneva).
+Note:
+The solid lines represent the global unweighted averages under these two indicators. Data labels use International Organization for Standardization economy codes.
+OPENING GREEN WINDOWS
+Technological opportunities for a low-carbon world
+TECHNOLOGY AND INNOVATION REPORT 2023
+7
+Windows opening and closing
+For developing countries and specific renewable energy products, the rapidly changing technological scene offers green windows of opportunity. Countries should take advantage of these now, if possible, since they are likely to close as other countries take over the markets. Otherwise, they may be firmly locked into fossil-fuel pathways, leaving the markets entirely to foreign investors. Much depends on the national preconditions and capacities and willingness to take opportunities and respond strategically as they arise.
+Looking at renewable energy technologies, there is significant variability in catch-up trajectories at the sector and country level. The table below considers four scenarios – illustrating which windows have been open, or are within reach, and countries and technologies that have taken advantage of them.
+Table 1 
+Four green window scenarios 
+Source: UNCTAD.
+Readiness
+Strong
+Weak
+Strong
+Scenario 1: 
+Windows open
+Solar PV, Biomass, CSP – China
+Bioethanol – Brazil
+Hydrogen – Chile (potentially)
+Scenario 2: 
+Windows to be open
+Solar PV – India
+Biogas – Bangladesh
+CSP – Morocco
+Wind – China
+Weak
+Scenario 3: 
+Windows within reach
+Biomass – Thailand and Viet Nam
+Hydrogen – Namibia
+Scenario 4: 
+Windows in the distance
+Wind – Kenya
+Bioenergy –Mexico and Pakistan
+Responses
+PATHWAYS TO MORE COMPLEX AND SUSTAINABLE PRODUCTION
+Technological opportunities for a low-carbon world
+TECHNOLOGY AND INNOVATION REPORT 2023
+9
+The best direction for developing countries is to switch to products that are more complex,1 have greater value added and lower carbon footprints.
+In most low-income developing countries, economic diversification involves emulating industries in more developed countries – a steady progression that builds on existing industries – it is thus ‘path-dependent.’  If a country already has the capacity for manufacturing medium and high technology products, it is in a stronger position and can move in a number of directions. But if it is largely producing primary products, it has fewer starting points. If basic technologies need to be learned or transferred from abroad, then innovation is likely to require greater government support. But whatever path they choose for switching green, governments in low and lower-middle-1 More complex products are considered to require higher levels of technology to be produced.9 income developing countries have to act fast and decisively; otherwise, they will be left further behind. Generally, as countries move from agriculture to industry, and to medium and high-tech manufacturing, complexity increases. But this does not necessarily lead to greener production. The less-complex sectors that also have lower carbon footprint include textiles, vegetable products, foodstuffs and footwear. The sectors that are more complex and have higher carbon footprints include chemicals and allied industries, metals and mineral products. However, much will depend on the product mix, because within each industry, one can find products in a range of carbon emissions - from below to above the global average.
+UNCTAD's Economic Complexity and Carbon Footprint Indices
+To help countries choose greener pathways UNCTAD has produced indices of economic complexity and carbon footprints for 43,000 products exported in international markets. As the product mix becomes more complex and more sophisticated, carbon emissions can fall per unit of GDP, though if more products are being produced for more people total emissions will rise (Figure 5).
+Selecting Greener Pathways
+For selecting more complex and greener directions, governments should strengthen national capacities for analysing new sectors (Figure 6). This will mean taking stock of the country’s existing technological and productive capacities and the availability of natural resource such as wind or agricultural waste. The evaluation can also take advantage of international tools, such as UNCTAD’s Catalogue of Diversification Opportunities 2022.
+OVERVIEW
+OPENING GREEN WINDOWS Technological opportunities for a low-carbon world
+Twin Transitions for Global Value Chains
+For most countries their capacity for moving to complex and greener products will depend on trade – on how they can fit into global value chains (GVCs). By participating in GVCs, countries can diversify by producing and exporting parts and components of final products or by upgrading existing output to have greater value added.
+Greening of Global Value Chains
+The greening of GVCs in manufacturing industries is driven by 1) national environmental legislation and trade agreements including environmental provisions, 2) new patterns of demand preferences and consumer behaviours, and 3) new technologies inducing efficiency gains to meet greener demand requirements. These drivers can open green windows of opportunities for firms in latecomer countries involved in GVCs, but seizing these opportunities is not automatic and the failure to do so may leave enterprises worse off than before.
+Greening Traditional GVCs
+GVCs can become greener through two main routes. The first is by manufacturing the goods used for green production, such as solar PV panels and wind turbines. The second is by greening traditional manufacturing industries, such as food, garments and textiles, leather and shoes, and furniture. Greening of traditional GVCs can be achieved by switching to digital frontier technologies associated with smart manufacturing – often referred to as Industry 4.0.
+Promoting the Twin Transition
+To promote the twin transition of green and digital, latecomer countries will need to build digital competency along with the necessary infrastructure and institutions, while building innovation capacity and overcoming financial barriers. Within value chains, governments can consider targeted policies, such as support for small and medium-size enterprises with finance for new machinery and other requirements for upgrading.
+Social and Environmental Upgrading
+As they upgrade, companies and countries should embed strong social and environmental values. Social upgrading refers to improving the rights and entitlements of workers and their employment. Environmental upgrading refers to a firm's ecological footprint, including its use of natural resources, its emission of greenhouse gases and its impact on biodiversity.
+OVERVIEW
+OPENING GREEN WINDOWS
+Technological opportunities for a low-carbon world
+TECHNOLOGY AND INNOVATION REPORT 2023
+OPENING GREEN WINDOWS
+Technological opportunities for a low-carbon world
+4. Priorities for opening green windows
+For opening green windows, governments need to assess the current conditions and then strengthen sectoral innovation systems. Much of this happens within ‘green industrial policy,’ which mainly involves mobilizing the necessary actors and resources and directing how knowledge capacities are upgraded – often amid considerable technological, economic, and political uncertainties.
+The report identifies a set of priorities for latecomer countries. They can build digital competency along with the necessary infrastructure and institutions, while strengthening innovation capacity and overcoming financial barriers.
+This requires collaboration between the private sector and other stakeholders. A lead agency within government should mobilize resources and convene stakeholders to assess overall state capacity in the areas related to the new technology, as well as the strengths of relevant public agencies, particularly for regulation, extension support systems, and for providing required public services. Overall policy should be mission-oriented – going beyond levelling the playing field to fixing market failures and involving broader programmes of market co-creation and shaping. 
+In industries where the technology is more mature, as with wind and solar, it may be difficult for latecomers to produce core components. But there can be opportunities further down the value chain related to deployment, such as project development, engineering, procurement and construction.
+Governments need to assess at various stages where and how production and innovation should be strengthened and changed. To do so, they can take advantage of UNCTAD’s Science, Technology and Innovation Policy reviews which cover the activities of national and local governments, private companies, universities, research institutes, financial institutions, and civil society organizations. 
+While the options differ from one country and company to another, there are some common priority areas.
+OVERVIEW
+OPENING GREEN WINDOWS
+Technological opportunities for a low-carbon world
+TECHNOLOGY AND INNOVATION REPORT 2023
+Set the direction
+Align environmental and industrial policies
+Governments need transformational agendas to mitigate climate change, commit to renewable energy production and consumption, electrify rural communities, and increase energy security. Policies that might previously have been developed in separate domains need to be co-created across the energy-environmental and industrial spheres. This requires a whole-of-government approach involving ministries of education, industry, trade, to cultivate design and engineering capabilities and prepare the economy and businesses for responding. 
+Invest in more complex and greener sectors
+The government, the private sector and other stakeholders should develop the capacities and build the institutions to continuously and strategically identify new technologies and sectors for diversification that are more complex and greener. The priority sectors should be supported through vertical policy instruments such as clusters, smart specialization initiatives, pilot and demonstration projects and areas, and the associated finance. The government and the private sector should also expand financing opportunities for developing and commercializing green technologies. These can include Investment funds for green technology, technical assistance in innovation and technology, and advisory services. To encourage the private sector, both government and donor agencies should come forward as early investors. These activities can be complemented by foreign direct investment.
+Build consumer demand
+Governments can offer the incentives and infrastructure that help shift consumer demand to encourage recycling and the circular economy. This can be supported by green procurement to create a ripple effect across the rest of the economy.
+Build green productive and innovative capacities
+Invest in R&D 
+Nascent green technologies usually require significant investments in R&D. Governments can offer subsidies to build up research, with the collaboration of universities and industry, both domestic and foreign. Public R&D investments are also needed in process improvements and complementary technologies. And when technologies are rapidly evolving, as in the wind industry, this investment will need to be continuous. In the early stages, when the domestic market cannot support a competitive industry, governments can set up technology demonstration projects.
+Raise awareness of green technologies
+The government, private sector and other stakeholders should create greater awareness of the potential of green technologies. This should start within basic education, along with campaigns to inform the private sector and consumers of the benefits of these technologies and their capacity to reduce carbon footprints. Within firms, technical education and skills development upskill and prepare the manufacturing sector to adopt green technology. 
+Organized civil society is also important for sensitizing the public about the significance of green technology. Civil society organization can support transfer of knowledge and capacity development activities for farmers and other small businesses. They can also start pilot projects that can be scaled-up by
+Capacity Development Activities
+capacity development activities for farmers and other small businesses. They can also start pilot projects that can be scaled-up by governments. Civil society organizations and the academia can serve as incubators or accelerators for young entrepreneurs interested in starting businesses in green agricultural technologies.
+Develop Digital Infrastructure and Skills
+As these technologies progress, all countries will need stronger digital infrastructure, in particular high-speed and high-quality Internet connections. This will mean public and private investments in ICT infrastructure along with regulations to foster competition in the telecommunications sector. Governments should also address the connectivity gaps between small and large firms and between urban and rural regions. Some technologies, such as drones, may also need specific regulations. Skills are needed for adopting existing technologies, for basic use, for adapting these technologies, and finally for creating new ones. For developing countries, it is particularly important to have the capacity to adapt and modify technologies since these are likely to be used in circumstances different from those in which they were originally developed.
+Overview
+OVERVIEW OPENING GREEN WINDOWS Technological opportunities for a low-carbon world TECHNOLOGY AND INNOVATION REPORT 2023 15 Governments should support businesses, including SMEs, to help them build digital skills in areas such as market research, product development, sourcing, production, sales, and after-sales services. Special consideration should be given to women in informal and artisanal small and microenterprises, particularly for entrepreneurs. Countries also need to reduce brain drain, retain skilled professionals, and attract skilled expatriates.
+International Collaboration for Sustainable Production
+In developing countries, opening green windows is unlikely to happen naturally as a result of businesses seeking greater efficiency and profits; it has to be the consequence of deliberate government action. The least technologically able countries cannot seize green opportunities without the support of the international community and official development assistance. This should be based on equitable partnerships – to build local innovation capabilities and marshal the necessary technologies. Collaboration on innovation not only transfers capital goods and equipment, it also enables people to develop the skills needed to operate and maintain the equipment (know-how) and understand why it is running (know-why). Green technologies typically need more adaptation to local conditions. Empowering developing countries for switching green thus requires broad and comprehensive development strategies that can deal with multiple tensions and develop partnerships for common public goods.
+Cooperation through International Trade
+Given the extent to which the production and consumption of products related to green technology are traded internationally, much will depend on the conditions on which this trade takes place. Trade rules should, for example, permit developing countries to protect infant green industries through tariffs, subsidies and public procurement – so that they not only meet local demand but reach the economies of scale that make exports more competitive. There should also be requirements for local content though these need to be carefully managed and deliberately sequenced so as to avoid the pitfalls that earlier industrial policies faced in most developing countries. To support these efforts, the World Trade Organization can review trade rules to make them more consistent with the Paris Agreement. However,
+Reform of Intellectual Property Rights
+When the developed economies were producing new products and catching up with Britain after the Industrial revolution, or when a few Asian countries started upgrading their productive and innovative capacities – they were often copying production processes with or without permission. Now the intellectual property rights (IPR) regime is tighter, making it harder for new producers to break in. The international IPR system should be reformed to enable governments in developing countries to manage their systems to support climate action, based on the needs of different sectors and different stages of development. Manufacturers in technologically weak and less diversified countries should be allowed to imitate the production of more technologically advanced economies. The principle that sustainable development should take precedence over commercial objectives was demonstrated

@@ -1,0 +1,34 @@
+{
+  "overall_score": 55.312408608836314,
+  "coverage_metrics": {
+    "sentence_coverage": 0.24259692651559497,
+    "entity_coverage": 0.773109243697479,
+    "word_coverage": 0.6207627118644068,
+    "num_qa_pairs": 33,
+    "doc_length": 2445,
+    "qa_density": 0.25,
+    "key_sentences_extracted": 7
+  },
+  "quality_metrics": {
+    "avg_question_length": 12.787878787878787,
+    "avg_answer_length": 73.6969696969697,
+    "proper_question_format": 1.0,
+    "has_question_mark": 1.0
+  },
+  "question_type_analysis": {
+    "what": 66.66666666666666,
+    "where": 0.0,
+    "when": 0.0,
+    "who": 0.0,
+    "why": 3.0303030303030303,
+    "how": 27.27272727272727,
+    "which": 0.0,
+    "other": 3.0303030303030303
+  },
+  "summary": {
+    "total_qa_pairs": 33,
+    "document_length_words": 2445,
+    "qa_pairs_per_sentence": 0.25,
+    "key_sentences_used": 7
+  }
+}

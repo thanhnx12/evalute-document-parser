@@ -1,0 +1,116 @@
+[
+    {
+      "question": "What is the main contribution of the paper regarding controllable text generation?",
+      "answer": "The paper introduces Regular Expression Instruction (REI), which utilizes an instruction-based mechanism to uniformly model diverse constraints. REI supports all popular fine-grained controllable generation constraints, including lexical, positional, and length, as well as their complex combinations, via regular expression-style instructions. The method only requires fine-tuning on medium-scale language models or few-shot, in-context learning on large language models and does not require further adjustment when applied to various constraint combinations.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the different types of constraints that REI can handle?",
+      "answer": "REI can handle various types of constraints, including lexical, positional, and length constraints, as well as their complex combinations. Lexical constraints control the specific words or phrases used in the generated text, positional constraints specify the position of the output text relative to the context, and length constraints limit the length of the output text.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "How does REI differ from previous approaches in terms of implementation?",
+      "answer": "Previous approaches often require significant architectural or decoding modifications, making them challenging to apply to additional constraints or resolve different constraint combinations. In contrast, REI only requires fine-tuning on medium-scale language models or few-shot, in-context learning on large language models, and does not require further adjustment when applied to various constraint combinations.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the experimental results of REI compared to previous baselines?",
+      "answer": "Experiments demonstrate that REI yields high success rates and adaptability to various constraints while maintaining competitiveness in automatic metrics and outperforming most previous baselines.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are some examples of tasks that can be unified and converted into controllable generation using large language models?",
+      "answer": "Tasks such as text classification, cloze test, and multiple-choice question answering constrain the output text to be exactly one of the given options. Abductive reasoning specifies that the position of the output text is between the previous and future contexts. Summarization tasks limit the length of the output, and machine translation demands to use the vocabulary of the target language for text generation.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What is the Lexicon & length constraint section about?",
+      "answer": "The Lexicon & length constraint section describes a scenario where a specific expression is input with placeholders (masks) and a length constraint. For example, the input 'Input <expression> <mask_0> stood(0) <mask_1> field(1) <mask_2> looking(2) <mask_3> <length=10> </expres-sion> Output <expression> The_1 player_2 stood(0)_3 in_4 the_5 field(1)_6 looking(2)_7 at_8 the_9 batter_10 </expres-sion>' indicates that the generated text should fit within a length of 10 characters and includes specific placeholders for certain words.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What does the Position & lexicon constraint section cover?",
+      "answer": "The Position & lexicon constraint section provides an example where a specific expression is used to fill in a gap in a sentence based on the position of the word. For instance, 'Input Stephen was at a party. <expression> <mask_0> knocked(0) <mask_1> </expression> He checked it but it was completely broken. Output <expression> Stephen knocked(0) over a vase while drunk. </expression>' shows that the word 'knocked' is placed in a position that makes sense in the context of the sentence.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "Can you explain the Position constraint & alternative ending section?",
+      "answer": "The Position constraint & alternative ending section demonstrates a scenario where a specific expression is used to fill in a gap in a sentence, and there are multiple possible endings. For example, 'Input My friends all love to go to the club to dance. They think it’s a lot of fun and always invite. I finally decided to tag along last Saturday. <expression> <options> <choice_0> <mask_0> My friends decided to keep inviting me out as I am so much fun. </choice_0> <choice_1> <mask_1> The next weekend, I was asked to please stay home. </choice_1> </options> </expression> Output <expression> I danced terribly and broke a friend’s toe. The next weekend, I was asked to please stay home. </expression>' shows that the sentence can end in two different ways, and the chosen ending is based on the context provided.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What is Regular Expression Instruction (REI) and how does it work?",
+      "answer": "Regular Expression Instruction (REI) is a method for universal fine-grained controllable generation. It is inspired by regular expressions and can easily describe mainstream constraints and their combinations. The instruction design uses markup language to construct the expression, making it easier for the model to distinguish between meta-data (instructions) and data (actual words). REI can be adapted to various scenarios such as summarization with length constraints, terminology-constrained machine translation, and alternative-ending story infilling. It supports all typical fine-grained controlling tasks and can be implemented by fine-tuning on medium-size models without requiring access to probability distribution or gradient.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the typical fine-grained control tasks in controllable text generation?",
+      "answer": "Typical fine-grained control tasks in controllable text generation include lexicon, generating position, and length. These tasks can be categorized into three different paradigms: retraining or refactoring the model, tuning on given data, and manually designed post-processing. Various approaches have been proposed to satisfy these constraints.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the limitations of current methods on transformer-based language models for controllable text generation?",
+      "answer": "Current methods on transformer-based language models mainly focus on certain constraints and may not be easily transferred to others, especially when dealing with the combination of constraints. For example, Non-Residual Prompting and A*esque Decoding only considered lexical and length constraints but could not specify the position of the generated text. On the other hand, COLD can generate text given past and future context but may not add word inclusion constraints or restrict the output length. Additionally, these controlling methods often require access to the probability distribution or even gradient of the model, which may not be available in large language models where only the output token can be obtained via API.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the advantages of the proposed method using REI?",
+      "answer": "The proposed method using REI has several advantages. First, it supports all typical fine-grained controlling tasks and is powerful enough to describe composite control specifications. Second, it can be adapted to various scenarios such as summarization with length constraints, terminology-constrained machine translation, and alternative-ending story infilling. Third, it is easy to implement and highly transferable to other models since it requires only fine-tuning on medium-size models and no further modification on large language models. It does not need access to probability distribution or gradient.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the advantages of the method described in the information?",
+      "answer": "The method has several advantages. First, it supports all typical fine-grained controlling tasks and can describe composite control specifications. Second, it can be adapted to various scenarios such as summarization with length constraints, terminology-constrained machine translation, and alternative-ending story infilling. Third, it is easy to implement and highly transferable to other models since it requires only fine-tuning on medium-size models and no further modification on large language models. Additionally, it does not need access to probability distribution or gradient.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "How does the controlling language REI work and what is its style?",
+      "answer": "The controlling language REI follows the style of regular expression due to its expressiveness. It uses an HTML-like markup language to help the model learn that the instructions are meaningful meta-data rather than plain symbols. This markup language also avoids the need for escape characters. The markup label is used to wrap special labels such as <expression>, <mask_i>, <options>, <choice_i>, and <length=n>.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the special labels in REI and what do they do?",
+      "answer": "REI contains several special labels. <expression> and </expression> mark the beginning and the end of the expression and can be placed anywhere in the input text. <mask_i> is equivalent to the regular expression “.*” and allows the model to generate zero or more tokens at its position. <options> and </options> are equivalent to parentheses “(” and “)”, allowing the model to choose one expression among the group. <choice_i> and </choice_i> wrap each choice to make recognition easier. The <length=n> label denotes the constraint of output word count.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the special labels used in REI and what do they do?",
+      "answer": "REI contains several special labels, including <expression> and </expression>, which mark the beginning and the end of the expression and can be placed anywhere in the input text. <mask_i> is equivalent to the regular expression “.*” and allows the model to generate zero or more tokens at its position. <options> and </options> are used to denote a group of choices, and the model will choose one expression among them. <choice_i> and </choice_i> are used to wrap each choice for easier recognition. Additionally, <length=n> is used to denote the constraint of output word count, overriding the character-level length in regular expressions.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "How does REI handle training data construction and redundancy compared to BART?",
+      "answer": "REI can automatically construct training data from the corpus' natural sentences, unlike BART, which relies on a denoising schema where the whole input is generated again. This approach reduces redundancy. Moreover, REI introduces choice-making, which further enriches the expressiveness of the controlling language beyond simple fill-in-the-blank tasks.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What are the different types of tasks that REI can handle, and how are they controlled?",
+      "answer": "REI can handle various tasks such as αNLG, αNLG+length, αNLI, CommonGen, CommonGen+length, αNLG+lexicon, αNLG+length+lexicon, StoryCompletion+infill, and Gigaword+length. These tasks are controlled using special labels like <expression>, <mask_i>, <options>, <choice_i>, and <length=n>. For example, <mask_i> allows the model to generate zero or more tokens, <options> and <choice_i> provide multiple choices for the model to select from, and <length=n> enforces a specific word count for the output.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    },
+    {
+      "question": "What is the significance of choice-making in REI?",
+      "answer": "Choice-making in REI is significant because it enriches the expressiveness of the controlling language beyond simple fill-in-the-blank tasks. It allows the model to make choices among multiple options, providing more flexibility and complexity in generating text.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "long_paper"
+    }
+  ]

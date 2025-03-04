@@ -1,0 +1,200 @@
+[
+    {
+      "question": "What is the main issue with using public blockchain in supply chain systems?",
+      "answer": "The main issue with using public blockchain in supply chain systems is that the distribution information, which can be private, is made public since the information recorded in the public blockchain can be read by anyone.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What method does the paper propose to preserve privacy while securing traceability in a supply chain system using public blockchain?",
+      "answer": "The paper proposes a method that preserves privacy by concealing the distribution information via encryption and ensures distribution among legitimate supply chain parties while concealing their blockchain address by using a zero-knowledge proof to prove their authenticity.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What blockchain platform was the proposed method implemented on, and what was the cost performance evaluation based on?",
+      "answer": "The proposed method was implemented on Ethereum smart contracts, and the cost performance was evaluated based on transaction fees. The results showed that the fee per party is at most 2.6 USD.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "Why is traceability in the supply chain important?",
+      "answer": "Traceability in the supply chain is important because it helps in identifying and managing the flow of materials, goods, and related information. It is crucial for preventing counterfeit products and ensuring the safety of products, as demonstrated by the 2015 E. coli outbreak at Chipotle Mexican Grill where contaminated ingredients could not be tracked.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What is the focus of the related work section?",
+      "answer": "The related work section discusses several blockchain-based systems that have been proposed for improving the traceability of products in supply chains. These systems include POMS [3] for managing product ownership, Kim et al. [4] for tracking products using traceable resource units (TRUs), and Huang et al. [5] for applying a method to the food supply chain through off-chain technology. However, none of these methods consider the privacy of distribution information.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What is the proposed method in the paper?",
+      "answer": "The proposed method extends POMS [3] to preserve the privacy of distribution information. It uses the public key of the product manufacturer to encrypt blockchain addresses, which are then stored in the blockchain to conceal the addresses and preserve privacy. Each supply chain party can prove, based on a zero-knowledge proof, that they know a secret token possessed by only legitimate supply chain parties, ensuring distribution among legitimate parties while concealing their blockchain addresses.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the key features of the proposed method?",
+      "answer": "The proposed method features the encryption of blockchain addresses using the public key of the product manufacturer, which are stored in the blockchain to conceal the addresses and preserve privacy. Each supply chain party can prove, based on a zero-knowledge proof, that they know a secret token possessed by only legitimate supply chain parties. This ensures distribution among legitimate parties while concealing their blockchain addresses.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What is the proposed method for preserving the privacy of distribution information?",
+      "answer": "The proposed method involves extending POMS [3] by encrypting blockchain addresses using the public key of the product manufacturer. These encrypted addresses are stored in the blockchain, concealing the actual blockchain addresses and preserving privacy. The manufacturer can track its products by using its own private key to decrypt and get the list of the blockchain addresses. Additionally, each supply chain party proves, based on a zero-knowledge proof, that it knows a secret token possessed by only legitimate supply chain parties, ensuring distribution among legitimate parties while concealing their blockchain addresses.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What information is required to prepare for distribution and how is it registered in MMC?",
+      "answer": "To prepare for distribution, the manufacturer information is registered in MMC, which requires a pair consisting of the manufacturer’s blockchain address and public key. Other information such as the name and phone number of the manufacturer can also be registered if necessary. MMC associates the manufacturer’s blockchain address with its products.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does a manufacturer register its products with PMC?",
+      "answer": "Only a manufacturer registered with MMC can register its products with PMC as the first owner of the product. The distribution of a product is initiated by the manufacturer’s registration of the product information with PMC after confirming that the manufacturer is registered with MMC and is associated with the product. PMC records the raw blockchain address, not the encrypted address, for the manufacturer only, as the manufacturer wants to prove that it has manufactured the product. Anyone can freely identify the manufacturer of the product by viewing the first owner recorded in PMC.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the steps involved in distribution management?",
+      "answer": "Distribution management consists of the following eight steps: 1) The owner shares a secret token with the recipient by a secure method. 2) The owner encrypts the recipient’s address AR using the secret token and the manufacturer’s public key to obtain Enc(AR). 3) The owner deploys VC on the blockchain. 4) The owner records the recipient’s encrypted address Enc(AR) and the contract address of VC obtained from Step 3 in PMC. 5) The recipient generates a proof that it knows the secret token shared in Step 1 based on a zero-knowledge proof. 6) The recipient sends the proof to PMC. 7) PMC calls VC and verifies that the proof sent is valid. 8) The owner is changed to Enc(AR).",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the eight steps involved in the distribution management process?",
+      "answer": "The distribution management process consists of the following eight steps: 1) The owner shares a secret token with the recipient by a secure method. 2) The owner encrypts the recipient’s address AR using the secret token and the manufacturer’s public key to obtain Enc(AR). 3) The owner deploys VC on the blockchain. 4) The owner records the recipient’s encrypted address Enc(AR) and the contract address of VC obtained from Step 3 in PMC. 5) The recipient generates a proof that it knows the secret token shared in Step 1 based on a zero-knowledge proof. 6) The recipient sends the proof to PMC. 7) PMC calls VC and verifies that the proof sent is valid. 8) The owner is changed to Enc(AR).",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What is the role of zero-knowledge proof in the distribution management process?",
+      "answer": "Zero-knowledge proof allows the recipient to prove that it can calculate Enc(AR) without revealing k and AR. This proof is generated in Step 5 and verified in Step 7. The recipient proves its legitimacy by sending this proof to PMC, which then calls VC to verify the proof.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does the manufacturer track the product using the blockchain?",
+      "answer": "The blockchain records the owners’ encrypted addresses as distribution information. These are encrypted using the manufacturer’s public key. Therefore, the manufacturer can track the product by decrypting it using its own private key and arranging the decrypted addresses in chronological order.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What is the purpose of using zk-SNARKs in the zero-knowledge proof?",
+      "answer": "We utilize zk-SNARKs for zero-knowledge proofs because it is known to be compatible with blockchain due to its non-interactivity and small proof size. This allows the recipient to prove that it can calculate Enc(AR) without revealing k and AR, and the proof is verified in Step 7.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does the system verify traceability and privacy of the proposed method?",
+      "answer": "The system verifies traceability and privacy by considering fraudulent activities by attackers. For traceability, there are three possible attack vectors: interfering with decryption of the owner’s encrypted address, impersonating the owner or recipient, and collusion between the owner and the recipient. The first attack is mitigated by the proof verification in Step 7, which always fails if a statement encrypted with a public key other than the manufacturer’s is recorded. The second attack is impossible due to the soundness of zero-knowledge proof. The third attack is possible but can be addressed in future work. For privacy, the system ensures that the encrypted address is secure using 254-bit elliptic curve cryptography, and the zero-knowledge proof used in the proposed method does not allow the recovery of information such as the address and the secret token.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the possible attack vectors for traceability and how are they mitigated?",
+      "answer": "There are three possible attack vectors for traceability: interfering with decryption of the owner’s encrypted address, impersonating the owner or recipient, and collusion between the owner and the recipient. The first attack is mitigated by the proof verification in Step 7, which always fails if a statement encrypted with a public key other than the manufacturer’s is recorded. The second attack is impossible due to the soundness of zero-knowledge proof. The third attack is possible but can be addressed in future work.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does the system ensure the privacy of the owner’s blockchain address?",
+      "answer": "The system ensures the privacy of the owner’s blockchain address by using 254-bit elliptic curve cryptography to encrypt the address, making it extremely difficult for a party who does not know the private key to decrypt the encrypted address in practical time. Additionally, the zero-knowledge proof used in the proposed method does not allow the recovery of information such as the address and the secret token, ensuring that the attacker cannot retrieve the owner’s blockchain address.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How can the manufacturer track the product using the blockchain?",
+      "answer": "The manufacturer can track the product by recording the owners’ encrypted addresses as distribution information on the blockchain. These addresses are encrypted using the manufacturer’s public key. The manufacturer can then track the product by decrypting the addresses using its own private key and arranging the decrypted addresses in chronological order.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does the blockchain track the product's distribution information?",
+      "answer": "The blockchain records the owners’ encrypted addresses as distribution information. These addresses are encrypted using the manufacturer’s public key. The manufacturer can track the product by decrypting these addresses using its own private key and arranging them in chronological order.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What is the purpose of verification in the proposed method?",
+      "answer": "The purpose of verification is to ensure the traceability and privacy of the proposed method by considering potential fraudulent activities by attackers.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How is the proposed method evaluated?",
+      "answer": "The proposed method is implemented on the Ethereum platform for evaluation. Transaction fees are measured, and use cases are discussed based on the evaluation results.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What tools and environments are used for the environment setup?",
+      "answer": "For the environment setup, we use Solidity version 0.5.11 to write the smart contracts and the JavaScript Virtual Machine environment provided by Remix to evaluate the proposed method. ZoKrates, a toolbox of zk-SNARKs, is used for the implementation of the zero-knowledge proof.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What tools and versions were used for the smart contract implementation and evaluation?",
+      "answer": "The smart contracts were written using Solidity version 0.5.11. The evaluation was performed using the JavaScript Virtual Machine environment provided by Remix. Additionally, ZoKrates [11], a toolbox of zk-SNARKs, was used for the implementation of the zero-knowledge proof.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What were the findings regarding the owner addresses in the recorded information?",
+      "answer": "The owner addresses could not be retrieved from the information recorded in the Product Management Contract (PMC) and Verification Contract (VC) after the product distributions.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does the proposed method ensure privacy while securing traceability?",
+      "answer": "The proposed method ensures privacy by encrypting the owner’s addresses and only allowing the manufacturer to decrypt them using its own private key. This way, the manufacturer can identify the product owner while keeping the owner's information private. The method secures traceability by allowing the manufacturer to track the product throughout the distribution process.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the transaction fees for the distribution process, and how were they calculated?",
+      "answer": "The transaction fees for the distribution process were calculated by measuring the gas values output by Remix and converting them into USD using the gas price at the time of evaluation. At the time of evaluation on March 17, 2020 at 11:00 a.m. (JST), the gas price was 1.1622 × 10−6 USD per gas. The maximum value of the transaction fee per party was found to be at most 2.6 USD. The transaction fees differ between the manufacturer and other parties due to the different processes they execute and the use of zero-knowledge proofs in the shipping process.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the challenges of recalls in the context of the proposed method?",
+      "answer": "The challenges of recalls include increasing consumer awareness of recalls and increasing recall response rates. In the case of distribution by the proposed method, the manufacturer can track the product and recall it through immediate notification of the owner. This can solve the issues related to recalls by ensuring that the product is promptly tracked and addressed.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "Can the manufacturer identify the product owner after the product is distributed?",
+      "answer": "Yes, the manufacturer can identify the product owner by decrypting the owner’s encrypted addresses recorded in the Product Management Contract (PMC) using its own private key.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the transaction fees for the distribution process, and how are they calculated?",
+      "answer": "The transaction fees for the distribution process were measured and converted into USD using the gas price. At the time of evaluation on March 17, 2020, the gas price was 1.1622 × 10−6 USD per gas. The maximum value of the transaction fee per party in this distribution is shown in Fig. 3. The manufacturer and other parties have different transaction fees because they execute different processes. The total transaction fees required for one party is at most 2.6 USD.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "How does the proposed method help with product recalls?",
+      "answer": "In the case of distribution by the proposed method, only the manufacturer can track the product. Therefore, these issues can be solved by tracking the product that is subject to recall and recalling that product through immediate notification of the owner. The owner pays at most 2.6 USD to be able to promptly implement measures such as repair or replacement of the product. In this case, the transaction fee may be regarded as the fee for getting this kind of warranty.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the challenges of recalls in the current supply chain system, and how does the proposed method address them?",
+      "answer": "The challenges of recalls include increasing consumer awareness of recalls and increasing recall response rates. In the case of distribution by the proposed method, only the manufacturer can track the product. Therefore, these issues can be solved by tracking the product that is subject to recall and recalling that product through immediate notification of the owner. The owner pays at most 2.6 USD to be able to promptly implement measures such as repair or replacement of the product.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    },
+    {
+      "question": "What are the future work directions for the proposed method?",
+      "answer": "There are two issues that remain to be addressed in the future. The first issue is consideration of ways to reduce the transaction fees. Most of the transaction fees in the proposed method arise from the deployment process of the Verification Contract (VC). Instead of the owner deploying VC for each distribution, the manufacturer could deploy it in advance. If supply chain parties use a pre-deployed VC, we can expect a significant reduction in the fees because of having only a one-time VC deployment fee. The second issue is to extend the method so that it can be applied to the assembly and disassembly of products. The proposed method assumes only the distribution of a single product without modification, that is, distribution of a finished product. Therefore, if it could be applied to the assembly and disassembly of products, it could be applied to the distribution of products other than finished products.",
+      "source": " owner's uploaded PDF file",
+      "document_id": "short_paper"
+    }
+  ]

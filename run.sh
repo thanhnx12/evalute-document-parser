@@ -1,4 +1,3 @@
-python eval.py --document ./inputs/document.txt \
-                --qa_pairs ./inputs/qa_pairs.json \
+python eval.py ./inputs/short_paper.txt ./inputs/long_report-old.json \
                 --output-dir ./outputs \
-                --output-prefix example
+                --output-prefix long_report_old

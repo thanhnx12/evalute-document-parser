@@ -1,0 +1,365 @@
+Abstract
+Controllable text generation is a fundamental aspect of natural language generation, with nu-merous methods proposed for different con-strain types. However, these approaches of-ten require significant architectural or decod-ing modifications, making them challenging to apply to additional constraints or resolve different constraint combinations. To address this, our paper introduces Regular Expression Instruction (REI), which utilizes an instruction-based mechanism to fully exploit regular ex-pressions’ advantages to uniformly model di-verse constraints. Specifically, our REI sup-ports all popular fine-grained controllable gen-eration constraints, i.e., lexical, positional, and length, as well as their complex combinations, via regular expression-style instructions. Our method only requires fine-tuning on medium-scale language models or few-shot, in-context learning on large language models, and requires no further adjustment when applied to various constraint combinations. Experiments demon-strate that our straightforward approach yields high success rates and adaptability to various constraints while maintaining competitiveness in automatic metrics and outperforming most previous baselines.
+Introduction
+Generating texts according to human requirements has long been a critical challenge in natural lan-guage generation (Ziegler et al., 2019; Ouyang et al., 2022). With the emergence of large language models, many tasks in natural language processing can be unified and converted into the formation of controllable generation (Prabhumoye et al., 2020). For example, text classification (Apté et al., 1994), cloze test (Devlin et al., 2019), and multiple-choice question answering (Lai et al., 2017) tasks con-strain the output text to be exactly one of the given options; abductive reasoning (Bhagavatula et al., 2020) specifies that the position of the output text is between the previous and future contexts; summarization task (Luhn, 1957) limits the length of output; machine translation (Bar-Hillel, 1960) demands to use the vocabulary of the target language for text generation.
+Lexicon & length constraint
+Input <expression> <mask_0> stood(0) <mask_1> field(1) <mask_2> looking(2) <mask_3> <length=10> </expres-sion> Output <expression> The_1 player_2 stood(0)_3 in_4 the_5 field(1)_6 looking(2)_7 at_8 the_9 batter_10 </expres-sion>
+Position & lexicon constraint
+Input Stephen was at a party. <expression> <mask_0> knocked(0) <mask_1> </expression> He checked it but it was completely broken. Output <expression> Stephen knocked(0) over a vase while drunk. </expression>
+Position constraint & alternative ending
+Input My friends all love to go to the club to dance. They think it’s a lot of fun and always invite. I finally decided to tag along last Saturday. <expression> <options> <choice_0> <mask_0> My friends decided to keep inviting me out as I am so much fun. </choice_0> <choice_1> <mask_1> The next weekend, I was asked to please stay home. </choice_1> </options> </expression> Output <expression> I danced terribly and broke a friend’s toe. The next weekend, I was asked to please stay home. </expression>
+Table 1: Input and output of instruction prompt based Regular Expression Instruction (REI)
+Table 1: Input and output of instruction prompt based Regular Expression Instruction (REI). REI can describe various types of complex fine-grain constraints, and here we present three examples. Meta-data instruction label is colored, lexicon constraints or correct choice is bold-faced, and auxiliary marks for length or lexicon uses gray color.
+For controllable text generation, typical fine-grained control tasks include
+For controllable text generation, typical fine-grained control tasks include lexicon (Lin et al., 2020), generating position (Shen et al., 2020) and length (Carlsson et al., 2022). Recently, various approaches have been proposed to satisfy these constraints, which can be categorized into three different paradigms: retraining or refactoring the model (Keskar et al., 2019; Zhang et al., 2020; He, 2021; Chan et al., 2021a); tuning on given data (Lester et al., 2021; Stiennon et al., 2020a); manually designed post-processing (Qin et al., 2020, 2022; Meng et al., 2022; Lu et al., 2021, 2022; Wang et al., 2021).
+Despite the reasonable performance, current methods on transformer-based language models mainly focus on certain constraints but may not be easily transferred to others, let alone the combination of constraints.
+Despite the reasonable performance, current methods on transformer-based language models mainly focus on certain constraints but may not be easily transferred to others, let alone the combination of constraints. For example, Non-Residual Prompting (Carlsson et al., 2022) and A*esque Decoding (Lu et al., 2022) only considered lexical and length constraints, but it cannot arbitrarily specify which position the generated text shall occur; on the other hand, COLD (Qin et al., 2022) can generate text given past and future context, but may not add word inclusion constraint norCOLD (Qin et al., 2022) can generate text given past and future context, but may not add word inclusion constraint nor restrict the output length. Moreover, these controlling methods assume that we have access to the probability distribution or even gradient of the model, but in the case of large language models where we can only obtain the output token via API, these methods may not be available, and thus black-box controlling techniques need further exploration. To address the above challenges, we proposed instruction-based Regular Expression Instruction (REI), for universal fine-grained controllable generation. Table 1 present a few examples. Our instruction design is inspired by regular expression, which can easily describe mainstream constraints and their combinations. Following Rosenbaum et al. (2022), we use markup language to construct the expression, hoping that model can better distinguish between meta-data (instructions) and data (actual words). We use two popular paradigms, language model fine-tuning, and large language model few-shot, to teach the model to understand the input constraint expression.
+Method
+Our method has several advantages. First, our constraint expression supports all typical fine-grained controlling task and is powerful enough to describe composite control specifications. Second, our method can be adapted to various scenarios, such as summarization with length constraint, terminology-constrained machine translation, and alternative-ending story infilling. Third, our method is easy to implement and highly transferable to other models since it requires only fine-tuning on medium-size models and no further modification on large language models, and it does not need access to probability distribution or gradient. Experiments demonstrate that current state-of-the-art language models can understand our controlling language, achieving high success rate while maintaining high automatic evaluation metric score and surpassing most of the strong previous baselines under various constraints. We hope our work can shed light on future works.
+Instruction Design
+The controlling language REI follows the style of regular expression due to its expressiveness. Also, it’s easy to evaluate whether the input expression instruction matches the generated text or not. Following Rosenbaum et al. (2022), HTML-like markup language is used, which helps the model learn that they are meaningful meta-data instructions rather than plain symbols, especially when using large language models in-context learning with limited examples and no parameter update. This markup label can also avoid the usage of the escape character. REI contains several special labels, as shown in Table 1. <expression> and </expression> mark the beginning and the end of the expression and can be put anywhere in the input text, assuming we only generate according to one expression at a time. <mask_i> is equivalent to the regular expression “.*” and similar to the mask token in BART (Lewis et al., 2020) and T5 (Raffel et al., 2022), where at its position the model shall generate zero or more tokens. <options> and </options> is equivalent to the parentheses “(” and “)” in regular expression, the model shall choose one expression among the group. To make the recognition easier, we use <choice_i> and </choice_i> to wrap each choice. The regular expression notation of length counts at the character level, but in practice, we want to control the output word length. Therefore, we use the <length=n> label to denote the constraint of output word count.
+Task
+Input with Control Expression αNLG O1 <expression> <mask_0> </expression> O2 αNLG+length O1 <expression> <mask_0> <length=l> </expression> O2 αNLI O1 <expression> <options> <choice_0> H1 </choice_0> <choice_1> H2 </choice_1> </options> </expression> O2 CommonGen <expression> <mask_0> c0(0) <mask_1> c1(1) <mask_2> c2(2) <mask_3> </expression> CommonGen+length <expression> <mask_0> c0(0) <mask_1> c1(1) <mask_2> c2(2) <mask_3> <length=l> </expression> (a) Fine-tune Task Task Input with Control Expression αNLG+lexicon O1 <expression> <mask_0> w(0) <mask_1> </expression> O2 αNLG+length+lexicon O1 <expression> <mask_0> w(0) <mask_1> <length=l> </expression> O2 StoryCompletion+infill S1S2S3 <expression> <mask_0> <options> <choice_0> E1 </choice_0> <choice_1> E2 </choice_1> </options> </expression> Gigaword+length [Text]
+ Summarize the aforementioned text in a single phrase.
+ <expression> <mask_0> <length=l> </expression> Wiktionary/ITAE Translate from English to German:
+
+ English: [Text] 
+ German: <expression> <mask_0> t0(0) <mask_1> t1(1) <mask_2> </expression> (b) Transfer Task Table 2: Constraint expression of each task. We fine-tune on tasks and variations listed in Table 2a, and additionally evaluate the unseen tasks listed in Table 2b. Notice that for few-shot learning, all the tasks are not trained before.
+Training
+Fine-tuning We could automatically construct the training data from the corpus'
+Introduction of Choice-Making
+fill-in-the-blank, we introduce choice-making, which further enriches the expressiveness of our controlling language.
+Training
+We could automatically construct the training data from the corpus and conduct self-supervised learning. Alternatively, we could also directly convert the input of existing supervised datasets into the form of our controlling language, and use them to fine-tune state-of-the-art models such as FLAN-T5 (Chung et al., 2022). The input format is shown in Table 2a. We include αNLG (Bhagavatula et al., 2020) and CommonGen (Lin et al., 2020), two English controllable generation datasets of position and lexicon constraint.
+αNLG and CommonGen
+In αNLG, given the past observation O1 and the future observation O2, the goal is to generate a hypothesis h that could follow O1 and trigger O2. The regular expression of the constraint is “.*” since no lexicon constraint is required. In CommonGen, given a set of k concepts C = {c0, c1, ..., ck−1}, the output text shall include those concepts and at the same time be consistent with common sense.
+Preprocessing αNLG and CommonGen
+While in the original setting, the appearance order of concepts and their word sense change is not provided, and the model shall make these decisions, here in our controlling language, the exact word and order must be given. Otherwise, we cannot construct the corresponding expression. So, we preprocess the original instances and recover the order and word sense of the concepts by the reference text.
+αNLI Dataset
+We also leverage these two datasets to teach the model to control the output length by simply adding the length label with the ground truth length. To better track how many words the model itself has already generated, we append the length number label _i to every word wi; for example, the sentence “Stephen knocked over a vase while drunk.” becomes “Stephen_0 knocked_1 over_2 a_3 vase_4 while_5 drunk._6”. Similarly, we remove the length number labels after completion.
+αNLI Dataset (continued)
+Finally, we need to teach the model about choosing grammar. We use αNLI (Bhagavatula et al., 2020) dataset, the task of which is to determine whether H1 or H2 is the more plausible hypothesis given the past and future observations O1 and O2, and the constraint of the regular expression is “(H1|H2)”.
+In-Context Learning
+For large language models like GPT-3.5 (Brown et al., 2020), where typically access is typically provided via API, we may not apply many traditional controllable generation techniques. However, we can leverage its ability of in-context learning to conduct fine-grain constraint generation.
+In-Context Learning (continued)
+More specifically, we leverage the ability to discover and imitate the repeated pattern (Madaan and Yazdanbakhsh, 2022; Min et al., 2022), which is desirable in our case, since unlike other natural language understanding tasks, the specific fine-grain constraint is a well-defined simple pattern that could be easily discoverable and imitable.
+In-Context Learning (continued)
+Given the input with control expression, we can select k instances with the same expression structure as the instruction prompt and send it to the large language model together with input. Naturally, when evaluating the test set, we can select examples from the training set or validation set, or other instances of the test set when they are not available.
+Inference
+We use rejection sampling to generate output text that is matched by the control expression. Verifying the output is simple, since we could convert the control expression into regular expression and check the validity.
+Inference (continued)
+Additionally, if the expression contains length constraint label, we count and compare the number of words in the output text. We try at most k times to avoid infinite loop and save costs if we use large language model API.
+Recursive Decoding
+Different choice might affect the generated text. For example, consider the case “S1S2S3.*(E1|E2)”, which gives the first three sentence and two alternative endings and the goal is to choose the correct
+Success Rate since
+it’s always 100%. Results As presented in Table 4a, we compare our method with two unsupervised baselines De-Lorean (Qin et al., 2020) and COLD (Qin et al., 2022), non-autoregressive Diffusion-LM (Li et al., 2022) and two fine-tuned methods on 11B T5 (Khashabi et al., 2021), 20B UL2 (Tay et al., 2022) and 8-shot NLI on GPT-3.5. With few-shot learning, GPT-3.5 outperforms two unsupervised baselines and Diffusion-LM, demonstrating its strong in-context learning ability given only a few infilling examples. Since it’s a relatively simple constraint, the performance between REI and NLI is very close. With our careful instruction prompt design and adequate fine-tuning, 3B FLAN-T5 shows stronger performance than 11B T5, and remains competitive compared to 20B UL2.
+Method
+BLEU ROUGE BERT Qin et al. (2020) 1.38 18.94 42.86 Qin et al. (2022) 1.79 19.50 42.67 Li et al. (2022) 7.10 28.30 89.00 Khashabi et al. (2021) 19.47 44.60 92.87 Tay et al. (2022) 24.34 49.30 93.51 NLI+GPT-3.5, 8 shot 13.62 36.38 91.05 REI+GPT-3.5, 8 shot 13.01 37.29 91.27 REI+FLAN-T5-xl 25.44 48.45 93.28 (a) Position constraint Model BLEU ROUGE SuR. NLI+GPT-3.5, 8 shot 9.9 32.93 42.09 REI+GPT-3.5, 8 shot 10.63 34.87 96.80 REI+FLAN-T5-xl 19.92 46.17 100.0 (b) Position & length constraint Model BLEU ROUGE SuR. NLI+GPT-3.5, 8 shot 14.76 42.04 99.01 REI+GPT-3.5, 8 shot 18.59 44.67 99.44 REI+FLAN-T5-xl 23.56 48.81 99.78 (c) Position & lexicon constraint Model BLEU ROUGE SuR. NLI+GPT-3.5, 8 shot 19.14 43.67 28.00 REI+GPT-3.5, 8 shot 17.45 43.90 94.02 REI+FLAN-T5-xl 21.99 49.17 99.69 (d) Position & length & lexicon constraint
+Position & Length Constraint
+As mentioned in Section 2.2, we slightly modify the αNLG test set to add the length constraint. We change the BERTScore metric to SuccessRate (SuR.). Table 4b shows the results. GPT-3.5 manages to imitate both position and length constraints, showing relatively high success rate, while under NLI, it performs badly. But with full-scale supervised learning, FLAN-T5 can robustly generate valid output on the test set 100% of the time. Also, in terms of automatic metrics, the output of both models does not downgrade dramatically.
+Position & Lexicon Constraint
+We can also modify the αNLG test set to add lexicon constraint, setting the keyword to be the first verb on the reference text. The input format is shown in Table 2b, and Table 4c shows the results. For GPT-3.5, it still is very likely to generate valid output nearly all of the time, and the automatic metrics enjoy improvement compared with the results of no lexicon constraint, since the additional gold words are provided, and the verb constraint limits the vast scope of possible hypothesis space. Also, REI is slightly better than NLI. For FLAN-T5, although it has been trained on position constraint or lexicon constraint separately, it has not seen the combination, and yet still demonstrates strong performance.
+Position & Lexicon & Length Constraint
+We can further combine all conditions together, adding both length and lexicon constraints on the test set of αNLG. The input format is presented in Table 2b, and Table 4d shows the results. Compositional constraints challenge few-shot GPT-3.5, as it’s more difficult to generate output that matches all three requirements, and the success rate drops slightly. Interestingly, NLI got a very low success rate. But fully-trained FLAN-T5 exhibits robust transfer ability, as the simultaneous three constraints are not included in training data, but FLAN-T5 still manages to achieve close to 100% success rate.
+Position Constraint & Alternative Endings
+On the test set of Story Cloze Test (Mostafazadeh et al., 2016), which is to choose between the right ending and the wrong one given the four-sentence context, we additionally mask the fourth sentence and require the model to infill the missing sentence while determining the correct ending. The input format is shown in Table 2b, and the result is shown in Table 6. We change the Success Rate (SuR.) metric to Accuracy (Acc.), since choosing either ending is valid. For GPT-3.5, we directly construct promoting examples with the initial input and final output, and surprisingly find that GPT-3.5 handles the composite constraint quite well, and chooses the right ending with not bad accuracy. Also, REI comes close to NLI in performance. For FLAN-T5-xl, we use the recursive decoding (Section 2.4, and it shows moderate performance, with lower accuracy but higher BLEU / ROUGE compared with GPT-3.5.
+Summarization with length constraint
+REI can also easily support abstractive summarization with desired length (Kikuchi et al., 2016; Fan et al., 2018), as long as the base model has been trained on the summarization task, which is the case in our choosing models FLAN-T5 (Chung et al., 2022) and GPT-3.5 (Ouyang et al., 2022). We choose to evaluate on the test set of English headline generation dataset Gigaword (Graff et al.,
+Wiktionary
+IATE Method Term% BLEU Term% BLEU Constraint decoding (Dinu et al., 2019) 99.50 25.80 82.00 25.30 Train-by-replace (Dinu et al., 2019) 93.40 26.30 94.50 26.00 RePP (Sun et al., 2022) 93.67 30.52 95.41 29.38 TADA (Ailem et al., 2021) 96.84 26.73 98.02 27.11 EDITOR (Xu and Carpuat, 2021) 99.8 29.30 100.0 28.90 Levenshtein Transformer (Susanto et al., 2020) 100.0 31.20 100.0 30.13 NLI+GPT-3.5, 8-shot 99.03 37.62 98.07 32.22 REI+GPT-3.5, 8-shot 99.52 34.88 99.45 35.25
+Story Cloze Test with positional constraint
+Method ROUGE SuR. NLI+GPT-3.5, 8 shot 3.83 21.27 88.99 REI+GPT-3.5, 8 shot 3.77 20.56 88.72 REI+FLAN-T5-xl 3.87 20.9 84.61
+Wiktionary and IATE.
+Wiktionary and IATE.
+Method
+BLEU
+ROUGE
+Acc.
+NLI+GPT-3.5, 8 shot
+3.83
+21.27
+88.99
+REI+GPT-3.5, 8 shot
+3.77
+20.56
+88.72
+REI+FLAN-T5-xl
+3.87
+20.9
+84.61
+Table 6: Results on Story Cloze Test with positional constraint.
+Method
+ROUGE
+SuR.
+SEQ (Baziotis et al., 2019)
+22.68
+-
+TED (Yang et al., 2020)
+22.83
+-
+NLI+GPT-3.5, 8 shot
+24.62
+28.87
+REI+GPT-3.5, 8 shot
+25.46
+79.51
+REI+FLAN-T5-xl
+28.49
+100.0
+Table 7: Results on the test set of Gigaword.
+2003), due to its short input and output length.
+Also, Gigaword is not included in the training set
+of FLAN-T5 or GPT-3.5. The input format is writ-
+ten in Table 2b. We use ROUGE-L (Lin, 2004) and
+Success Rate (SuR.) for metrics.
+We compare our methods with two unsuper-ised unconstrainted baselines SEQ (Baziotis et al.,
+2019) and TED (Yang et al., 2020), and the results
+are shown in Table 7. Both GPT-3.5 and FLAN-
+T5 exceed the two baselines in ROUGE-L score,
+showing relatively good text quality. Since the sum-
+marization task constrains more on the semantic
+of output compared with pure lexicon constraint
+(CommonGen) or position constraint (αNLG), sat-
+isfying length constraint might be more difficult,
+and GPT-3.5 shows a relatively lower success rate,
+but NLI has the worst success rate. But neverthe-
+less, FLAN-T5 still achieves 100% success rate.
+Notice that with limited REI training tasks, the
+model can still generalize to new tasks with the
+specific format, demonstrating the robust transfer
+ability under supervised learning.
+3.5
+Terminology-constrainted machine
+transaltion
+We can also apply REI to machine translation with
+terminology constraint (Dinu et al., 2019), which is
+to ensure the given terminologies T = (t0, t1, ...)
+are used in translation. We only test GPT-3.5 here,
+due to its superiority in multi-language understand-
+ing, while the majority of output language during
+pre-training, multi-task learning, and fine-tuning is
+English. We evaluate on the test set of Wiktionary
+and IATE (Dinu et al., 2019), two English-German
+translation dataset, using BLEU-4 (Papineni et al.,
+2002) and Terminology Coverage (Term) for met-
+rics.
+We compare our method with several strong
+baselines, including Constraint decoding (Dinu
+et al., 2019), Train-by-replace (Dinu et al., 2019),
+RePP (Sun et al., 2022), TADA (Ailem et al., 2021),
+EDITOR (Xu and Carpuat, 2021), Levenshtein
+Transformer (Susanto et al., 2020), and 8-shot NLI
+on GPT-3.5. Due to its vast parameters, GPT-3.5
+outperforms all other baselines in terms of BLEU
+score. Also, GPT-3.5 achieves near 100% termi-
+ology coverage rate, which is close to the existing
+upper limit. Finally, REI has a slightly higher term
+coverage than NLI.
+3.6
+Qualitative Results
+Table 8 shows the samples of lexicon & length con-
+straints (Section 3.2.2), position & lexicon & length
+constraints (Section 3.3.4), position constraint with
+alternative ending (Section 3.3.5), summarization
+with length constraint (Section 3.4) and translation
+with terminology constraint (Section 3.5). Both
+FLAN-T5 and GPT-3.5 generate valid and fluent
+sentences. GPT-3.5 also uses more vivid or human-\like words like “antihistamines” or the abbreviation
+“FIA”, probably due to its large-scale model size
+and training corpus.
+8
+CommonGen+length
+<expression> <mask_0> dance(0) <mask_1> performed(1) <mask_2> stage(2) <mask_3>
+wearing(3) <mask_4> costumes(4) <mask_5> <length=11> </expression>
+FLAN-T5-xl
+A_1 dance(0)_2 is_3 performed(1)_4 on_5 a_6 stage(2)_7 by_8 people_9 wearing(3)_10
+costumes(4)_11
+GPT-3.5, 8 shot
+A_1 traditional_2 dance(0)_3 is_4 performed(1)_5 on_6 the_7 stage(2),_8 wearing(3)_9
+colorful_10 costumes(4)_11
+αNLG+length+lexicon
+Jim was not confident in his home repair skills. <expression> <mask_0> attended(0) <mask_1>
+<length=9> </expression> Jim was so excited to learn a new skill.
+FLAN-T5-xl
+Jim_1 bought_2 new_3 gloves_4 and_5 attended(0)_6 a_7 home_8 repair._9
+GPT-3.5, 8 shot
+Jim_1 attended(0)_2 a_3 home_4 repair_5 workshop_6 to_7 gain_8 confidence._9
+StoryCompletion+infill
+I tried going to the park the other day. The weather seemed nice enough for a walk. Within
+minutes of getting there I started sneezing. <expression> <options> <choice_0> <mask_0> My
+allergies were too bad and I had to go back home. </choice_0> <choice_1> <mask_1> It
+reminded me of how much I loved spring flowers. </choice_1> </options> </expression>
+FLAN-T5-xl
+There were a lot of people at the park. My allergies were too bad and I had to go back home.
+GPT-3.5, 8 shot
+I realized I had forgotten the antihistamines at home. My allergies were too bad and I had to
+go back home.
+Gigaword+length
+japan ’s toyota team europe were banned from the world rally championship for one year here
+on friday in a crushing ruling by the world council of the international automobile federation.
+
+Summarize the aforementioned text in a single phrase.
+
+ <expression> <mask_0> <length=6>
+</expression>
+FLAN-T5-xl
+toyota_1 team_2 europe_3 banned_4 from_5 rallying_6
+GPT-3.5, 8 shot
+toyota_1 team_2 europe_3 banned_4 by_5 fia_6
+Wiktionary
+Translate from English to German:
+
+ English: Jennifer Aniston need not always be perfect or
+successful. 
+
+ German: <expression> <mask_0> erfolgreich(0) <mask_1> </expression>
+GPT-3.5, 8 shot
+Jennifer Aniston muss nicht immer perfekt oder erfolgreich(0) sein.
+Table 8: Qualitative examples of various constraints by fine-tuned FLAN-T5-xl and few-shot GPT-3.5.
+4
+Related Work
+Tasks of Controllable Text Generation
+Control-
+lable text generation refers to the tasks that gener-
+ate text according to the controlling signals (Prab-
+humoye et'Control- lable text generation refers to the tasks that generate text according to the controlling signals (Prab- humoye et al., 2020). Typically, the output can be constrained at three levels from coarse to fine: (Zhang et al., 2022) semantic, structural and lexical. At semantic level, the signals include topic (Tang et al., 2019), sentiment (Logeswaran et al., 2018), format (Li et al., 2020), toxity (Krause et al., 2021) and other abstract attribute. At the structural level, the constraints include key-value data table (Novikova et al., 2017), syntax tree, and parts- of-speech (Li et al., 2022). At lexical level, then controlling elements include keyword (Lin et al., 2020), generating position (Shen et al., 2020) and length (Carlsson et al., 2022).
+Methods of Controllable Text Generation
+Current approach for controllable text generation can be summarized as three main categories (Zhang et al., 2022): retraining or refactoring the model, e.g. CTRL (Keskar et al., 2019), POINTER (Zhang et al., 2020), CMDP (Chan et al., 2021b), Con- strained BART (He, 2021), CoCon (Chan et al., 2021a), PlanGen (Su et al., 2021) and InstructCTG (Zhou et al., 2023); tuning on given data, including model fine-tuning, Prompt Tuning (Lester et al., 2021) and RL-Fine Tuning (Stiennon et al., 2020a); and post-processing, which can either design specific decoding strategy, e.g. Constrainted Beam Search (Anderson et al., 2017), DeLorean (Qin et al., 2020), COLD (Qin et al., 2022), Neuro- Logic (Lu et al., 2021); or using auxilary guiding model, e.g. PPLM (Anderson et al., 2017), GeDI (Krause et al., 2021), FUDGE (Yang and Klein, 2021), CTRLsum (He et al., 2022), Plug-and-Play Content Planning (Liu et al., 2022), NADO (Meng et al., 2022), and MACSum (Zhang et al., 2023) .
+Conclusion
+We proposed Regular Expression Instruction (REI), a novel instruction-based method that unifies fine- grain lexical-level constrained text generation. Our method is highly adaptable, fitting either language model fine-tuning or large language model in- context learning. Our controlling language can also easily be applied to other related tasks, including story completion while infilling, summa- rization with length constraint, and machine trans- lation with terminology constraint. Experiments show that our method has a high success rate and outperforms most of the previous strong baselines, demonstrating its effectiveness despite the simplic- ity. We leave the evaluation and improvement of more complex constraints for future works.
+Limitations
+Our proposed Regular Expression Instruction is serialized and cannot describe a set of keyword constraints where the appearing order is arbitrary, but only a list of keywords with determined order. Future work is needed to exceed the limit, either by approximating the word order or by repeated ran- dom sampling. Also, to obtain valid results we use reject sampling, which might need many repeated trials, thus reducing the efficiency and downgrad- ing the speed. More efficient mechanisms with less retry are worth investigating. Additionally, un- der the current trends of the instruction following, more sophisticated prompts under 0-shot is worth investigating.
+Ethics Statement
+This work involves no sensitive data and uses several public-available datasets. This work discusses controllable text generation, which aims for better usage of the black-box language model and may better reduce the problematic biases. We notice that the method proposed in this work can be used to generate disinformation or harmful content di- rectly via controlling language, but the malicious usage can be further avoided by filtering out im- proper control input and stopping harmful content generation.
+References
+Melissa Ailem, Jingshu Liu, and Raheel Qader. 2021. Encouraging neural machine translation to satisfy terminology constraints. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021, pages 1450–1455, Online. Association for Computational Linguistics. Peter Anderson, Basura Fernando, Mark Johnson, and Stephen Gould. 2016. Spice: Semantic proposi- tional image caption evaluation. In Computer Vision – ECCV 2016, pages 382–398, Cham. Springer International Publishing. Peter Anderson, Basura Fernando, Mark Johnson, and Stephen Gould. 2017. Guided open vocabulary im- age captioning with constrained beam search. In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing, pages 936– 945, Copenhagen, Denmark. Association for Computational Linguistics. Chidanand Apté, Fred Damerau, and Sholom M. Weiss. 1994. Automated learning of decision rules for text categorization. ACM Trans. Inf. Syst., 12(3):233–251. Yehoshua Bar-Hillel. 1960. The present status of au- tomatic translation of languages**this article was prepared with the sponsorship of the informations systems branch, office of naval research, under contract nr 049130. reproduction as a whole or in part for the purposes of the u. s. government is permitted. volume 1 of Advances in Computers, pages 91–163. Elsevier. Christos Baziotis, Ion Androutsopoulos, Ioannis Kon- tas, and Alexandros Potamianos. 2019. SEQˆ3: Differentiable sequence-to-sequence-to-sequence au- toencoder for unsupervised abstractive sentence com- pression. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational'
+References
+Denmark. Association for Compu-
+tational Linguistics.
+Brian Lester, Rami Al-Rfou, and Noah Constant. 2021.
+The power of scale for parameter-efficient prompt
+tuning. In Proceedings of the 2021 Conference on
+Empirical Methods in Natural Language Processing,
+pages 3045–3059, Online and Punta Cana, Domini-
+can Republic. Association for Computational Lin-
+guistics.
+Mike Lewis, Yinhan Liu, Naman Goyal, Marjan
+Ghazvininejad, Abdelrahman Mohamed, Omer Levy,
+Veselin Stoyanov, and Luke Zettlemoyer. 2020.
+BART: Denoising sequence-to-sequence pre-training
+for natural language generation, translation, and com-
+prehension. In Proceedings of the 58th Annual Meet-
+ing of the Association for Computational Linguistics,
+pages 7871–7880, Online. Association for Computa-
+tional Linguistics.
+Piji Li, Haisong Zhang, Xiaojiang Liu, and Shuming Shi.
+2020. Rigid formats controlled text generation. In
+Proceedings of the 58th Annual Meeting of the Associ-
+action for Computational Linguistics, pages 742–751,
+Online. Association for Computational Linguistics.
+Xiang Lisa Li, John Thickstun, Ishaan Gulrajani, Percy
+Liang, and Tatsunori Hashimoto. 2022. Diffusion-
+LM improves controllable text generation. In Ad-
+vances in Neural Information Processing Systems.
+Bill Yuchen Lin, Wangchunshu Zhou, Ming Shen, Pei
+Zhou, Chandra Bhagavatula, Yejin Choi, and Xiang
+Ren. 2020. CommonGen: A constrained text gen-
+eration challenge for generative commonsense rea-
+sioning. In Findings of the Association for Computa-
+tional Linguistics: EMNLP 2020, pages 1823–1840,
+Online. Association for Computational Linguistics.
+
+11
+Chin-Yew Lin. 2004. ROUGE: A package for auto-
+matic evaluation of summaries. In Text Summariza-
+tion Branches Out, pages 74–81, Barcelona, Spain.
+Association for Computational Linguistics.
+Yinhong Liu, Yixuan Su, Ehsan Shareghi, and Nigel
+Collier. 2022. Plug-and-play recipe generation with
+content planning. In Proceedings of the 2nd Work-
+shop on Natural Language Generation, Evaluation,
+and Metrics (GEM), pages 223–234, Abu Dhabi,
+United Arab Emirates (Hybrid). Association for Com-
+putational Linguistics.
+Lajanugen Logeswaran, Honglak Lee, and Samy Ben-
+gio. 2018. Content preserving text generation with
+attribute controls. In Proceedings of the 32nd Interna-
+tional Conference on Neural Information Processing
+Systems, NIPS’18, page 5108–5118, Red Hook, NY,
+USA. Curran Associates Inc.
+Ximing Lu, Sean Welleck, Peter West, Liwei Jiang,
+Jungo Kasai, Daniel Khashabi, Ronan Le Bras, Lian-
+hui Qin, Youngjae Yu, Rowan Zellers, Noah A. Smith,
+and Yejin Choi. 2022. NeuroLogic a*esque decoding:
+Constrained text generation with lookahead heuris-
+tics. In Proceedings of the 2022 Conference of the
+North American Chapter of the Association for Com-
+putational Linguistics: Human Language Technolo-
+gies, pages 780–799, Seattle, United States. Associa-
+tion for Computational Linguistics.
+Ximing Lu, Peter West, Rowan Zellers, Ronan Le Bras,
+Chandra Bhagavatula, and Yejin Choi. 2021. Neuro-
+Logic decoding: (un)supervised neural text genera-
+tion with predicate logic constraints. In Proceedings
+of the 2021 Conference of the North American Chap-
+ter of the Association for Computational Linguistics:
+Human Language Technologies, pages 4288–4299,
+Online. Association for Computational Linguistics.
+H. P. Luhn. 1957. A statistical approach to mechanized
+encoding and searching of literary information. IBM
+Journal of Research and Development, 1(4):309–317.
+Aman Madaan and Amir Yazdanbakhsh. 2022. Text
+and patterns: For effective chain of thought, it takes
+two to tango. CoRR, abs/2209.07686.
+Tao Meng, Sidi Lu, Nanyun Peng, and Kai-Wei Chang.
+2022. Controllable text generation with neurally-
+decomposed oracle. In Advances in Neural Informa-
+tion Processing Systems.
+Sewon Min, Xinxi Lyu, Ari Holtzman, Mikel Artetxe,
+Mike Lewis, Hannaneh Hajishirzi, and Luke Zettle-
+moyer. 2022.
+Rethinking the role of demonstra-
+tions: What makes in-context learning work? CoRR,
+abs/2202.12837.
+Nasrin Mostafazadeh, Nathanael Chambers, Xiaodong
+He, Devi Parikh, Dhruv Batra, Lucy Vanderwende,
+Pushmeet Kohli, and James Allen. 2016. A corpus
+and cloze evaluation for deeper understanding of
+commonsense stories. In Proceedings of the 2016
+Conference of the North American Chapter of the
+Association for Computational Linguistics: Human
+Language Technologies, pages 839–849, San Diego,
+California. Association for Computational Linguis-
+tics.
+Jekaterina Novikova, Ondˇrej Dušek, and Verena Rieser.
+2017. The E2E dataset: New challenges for end-
+to-end generation. In Proceedings of the 18th An-
+nual SIGdial Meeting on Discourse and Dialogue,
+pages 201–206, Saarbrücken, Germany. Association
+for Computational Linguistics.
+Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Car-
+roll L. Wainwright, Pamela Mishkin, Chong Zhang,
+Sandhini Agarwal, Katarina Slama, Alex Ray, John
+Schulman, Jacob Hilton, Fraser Kelton, Luke Miller,
+Maddie Simens, Amanda Askell, Peter Welinder,
+Paul F. Christiano, Jan Leike, and Ryan Lowe. 2022.
+Training language models to follow instructions with
+human feedback. CoRR, abs/2203.02155.
+Kishore Papineni, Salim Roukos, Todd Ward, and Wei-
+Jing Zhu. 2002. Bleu: a method for automatic evalu-
+ation of machine translation. In Proceedings of the
+40th Annual Meeting of the Association for Compu-
+tational Linguistics, pages 311–318, Philadelphia,
+Pennsylvania, USA. Association for Computational
+Linguistics.
+Shrimai Prabhumoye, Alan W Black, and Ruslan
+Salakhutdinov. 2020.
+Exploring controllable text
+generation techniques. In Proceedings of the 28th
+International Conference on Computational Linguis-
+tics, pages 1–14, Barcelona, Spain (Online). Interna-
+tional Committee on Computational Linguistics.
+Lianhui Qin, Vered Shwartz, Peter West, Chandra Bha-
+gavatula, Jena D. Hwang, Ronan Le Bras, Antoine
+Bosselut, and Yejin Choi. 2020. Back to the future:
+Unsupervised backprop-based decoding for counter-actual
